@@ -4,6 +4,8 @@
 
 A simple GUI application to toggle power management settings for Realtek audio devices on Windows.
 
+![Realtek Audio PM Switch](Realtek-Audio-PM-Switch_v0.1.0.png)
+
 ## Description
 
 This application allows users to enable or disable power management for Realtek audio devices by modifying the Windows registry.
@@ -11,8 +13,6 @@ This application allows users to enable or disable power management for Realtek 
 ## Version
 
 Current pre-release version: **v0.1.0**
-
-![Realtek Audio PM Switch](Realtek-Audio-PM-Switch_v0.1.0.png)
 
 ## Requirements
 
