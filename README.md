@@ -3,7 +3,8 @@
 ![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/ConceptExplorer/Realtek-Audio-PM-Switch?include_prereleases&label=version)
 
 A simple GUI application to **fix the Realtek audio popping issue** by toggling power management settings for Realtek audio devices on Windows.*
-  *Hopyfully the fix/workaround works for your Realtek audio device until they fix it in the driver.
+  
+  *Hopefully this fixes your Realtek audio device until they fix it in the driver.
 
 ![Realtek Audio PM Switch](Realtek-Audio-PM-Switch_v0.1.0.png)
 
