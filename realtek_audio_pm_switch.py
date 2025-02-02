@@ -3,7 +3,7 @@ import sys
 import tkinter as tk
 from tkinter import messagebox
 import winreg
-import ctypes  # Make sure to import ctypes
+import ctypes
 
 def is_admin():
     try:
@@ -18,20 +18,14 @@ def request_admin():
     params = ' '.join([script] + sys.argv[1:])
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, params, None, 1)
 
-def toggle_cs_enabled():
+def set_cs_enabled(value):
     reg_path = r"SYSTEM\CurrentControlSet\Control\Power"
     reg_name = "CsEnabled"
     try:
         with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, reg_path, 0, winreg.KEY_ALL_ACCESS) as reg_key:
-            current_value, reg_type = winreg.QueryValueEx(reg_key, reg_name)
-            new_value = 0 if current_value == 1 else 1
-            winreg.SetValueEx(reg_key, reg_name, 0, winreg.REG_DWORD, new_value)
-            status = "disabled" if new_value == 0 else "enabled"
-            messagebox.showinfo("Success", f"Power management for Realtek audio is now {status}. (CsEnabled is set to {new_value})")
-    except FileNotFoundError:
-        with winreg.CreateKey(winreg.HKEY_LOCAL_MACHINE, reg_path) as reg_key:
-            winreg.SetValueEx(reg_key, reg_name, 0, winreg.REG_DWORD, 1)
-            messagebox.showinfo("Success", "Power management for Realtek audio was created and enabled. (CsEnabled is set to 1)")
+            winreg.SetValueEx(reg_key, reg_name, 0, winreg.REG_DWORD, value)
+            status = "enabled" if value == 1 else "disabled"
+            messagebox.showinfo("Success", f"Power management for Realtek audio is now {status}. (CsEnabled is set to {value})")
     except PermissionError:
         messagebox.showerror("Error", "Permission denied. Please run the script as an administrator.")
     except Exception as e:
@@ -39,10 +33,22 @@ def toggle_cs_enabled():
 
 def create_gui():
     root = tk.Tk()
-    root.title("Toggle Realtek Power Management")
+    root.title("Realtek Audio PM Switch")
+    root.geometry("300x150")  # Set the window size
 
-    toggle_button = tk.Button(root, text="Toggle Power Management", command=toggle_cs_enabled)
-    toggle_button.pack(pady=20)
+    tk.Label(root, text="Control Power Management:").pack(pady=10)
+
+    def enable_pm():
+        set_cs_enabled(1)
+
+    def disable_pm():
+        set_cs_enabled(0)
+
+    enable_button = tk.Button(root, text="Power Management On", command=enable_pm, width=20)
+    enable_button.pack(pady=5)
+
+    disable_button = tk.Button(root, text="Power Management Off", command=disable_pm, width=20)
+    disable_button.pack(pady=5)
 
     root.mainloop()
 
