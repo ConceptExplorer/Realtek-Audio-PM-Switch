@@ -12,6 +12,8 @@ This application allows users to enable or disable power management for Realtek 
 
 Current pre-release version: **v0.1.0**
 
+![Realtek Audio PM Switch](Realtek-Audio-PM-Switch_v0.1.0.png)
+
 ## Requirements
 
 - Python 3.6 or higher
