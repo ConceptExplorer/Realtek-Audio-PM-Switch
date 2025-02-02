@@ -1,6 +1,10 @@
 # Realtek-Audio-PM-Switch
 A simple GUI application to toggle power management settings for Realtek audio devices on Windows.
 
+## Version
+
+Current pre-release version: **v0.1.0**
+
 ## Usage
 
 Run the script with administrative privileges:
