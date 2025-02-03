@@ -34,9 +34,17 @@ Requirements:
 Install the pywin32 library:
 pip install pywin32
 
-Usage
+## Usage
+
+### Running the Script
+
 Run the script with administrative privileges:
+
+```sh
 python realtek_audio_pm_switch.py
+
+Run the EXE file by double-clicking it or running it from the command prompt:
+dist\realtek_audio_pm_switch.exe
 
 License
 This project is licensed under the MIT License.
